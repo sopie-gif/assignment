@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sopie’s Personal Resume</title>
+  <link rel="shortcut icon" type="image/jpg" href="soup.jpg" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(120deg, #dff6ff, #f7e9f7);
+      color: #333;
+      overflow-x: hidden;
+      cursor: none;
+    }
+
+    html { scroll-behavior: smooth; }
+
+/* SCROLL PROGRESS */
+.progress-bar{
+  position:fixed;
+  top:0;
+  left:0;
+  height:5px;
+  background:#82BAC4;
+  width:0%;
+  z-index:9999;
+}
+
+/* CURSOR GLOW */
+.cursor{
+  width:25px;
+  height:25px;
+  border-radius:50%;
+  position:fixed;
+  pointer-events:none;
+  background:rgba(130,186,196,.4);
+  box-shadow:0 0 25px rgba(130,186,196,.9);
+  transform:translate(-50%,-50%);
+  z-index:9999;
+}
+
+/* FADE */
+.fade-in{
+  animation:fadeIn 1.2s forwards;
+  opacity:0;
+}
+@keyframes fadeIn{to{opacity:1}}
+
+/* NAV */
+nav{
+  position:sticky;
+  top:0;
+  background:rgba(255,255,255,.9);
+  padding:15px;
+  text-align:center;
+  z-index:10;
+}
+
+nav a {
+  position: relative;
+  margin: 0 15px;
+  text-decoration: none;
+  font-weight: 600;
+  color: #006078;
+  padding: 5px 0;
+  transition: color 0.3s ease;
+}
+
+/* underline animation */
+nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0%;
+  height: 3px;
+  background: #82BAC4;
+  border-radius: 10px;
+  transition: width 0.3s ease;
+}
+
+nav a:hover {
+  color: #355C7D;
+}
+
+nav a:hover::after {
+  width: 100%;
+}
+
+/* BANNER */
+    #firstdivision {
+      background-image: url('background.jpg');
+      background-size: cover;
+      background-position: center;
+      height: 500px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    #firstdivision img {
+      height: 150px;
+      border-radius: 50%;
+      border: 5px solid #82BAC4;
+      transition: transform .4s ease;
+    }
+    #firstdivision img:hover { transform: scale(1.08);
+    }
+
+/* BUTTON */
+    .btn {
+      margin-top: 15px;
+      padding: 12px 28px;
+      background-color: #AFCBD5;
+      color: white;
+      border-radius: 30px;
+      font-size: 16px;
+      text-decoration: none;
+      display: inline-block;
+      transition: 0.3s ease;
+      box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
+    }
+    .btn:hover {
+      transform: scale(1.07);
+      background-color: #355C7D;
+    }
+
+/* SECTIONS */
+    .section {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 80px 10%;
+      gap: 50px;
+    }
+
+    .section img {
+      height: 350px;
+      border-radius: 20px;
+      object-fit: cover;
+      transition: 0.4s ease;
+    }
+    .section img:hover {
+      transform: scale(1.05);
+      box-shadow: 0px 10px 25px rgba(0,0,0,0.2);
+    }
+
+    h1 {
+      color: #006078;
+      font-weight: 700;
+    }
+
+    p {
+      font-size: 18px;
+      line-height: 1.7;
+      color: #444;
+      text-align: justify;
+      text-justify: inter-word;
+    }
+
+    footer p {
+      text-align: center;
+    }
+
+
+/* VIDEO */
+    iframe {
+      border-radius: 20px;
+      transition: transform .4s ease;
+    }
+    iframe:hover {
+      transform: scale(1.03);
+    }
+
+    /* To Top Button */
+    .top-btn {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+/* GALLERY */
+    .gallery {
+      flex-wrap: wrap;
+      justify-content: center;
+  }
+
+
+    .gallery img {
+      height: 200px;
+      width: 280px;
+      object-fit: cover;
+      margin: 15px;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      transition: transform .4s ease, box-shadow .4s ease;
+  }
+    .gallery img:hover {
+      transform: translateY(-10px) scale(1.05);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.25);
+    }
+    .gallery img:hover { transform: scale(1.1); }
+
+/* FOOTER */
+    footer {
+      background-color: #AFCBD5;
+      color: white;
+      padding: 40px;
+      text-align: center;
+      font-size: 20px;
+    }
+
+/* LIGHTBOX */
+    .lightbox {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.85);
+        display: none;
+        justify-content: center;
+        align-items: center;
+        padding-top: 80px;
+        z-index: 999;
+    }
+
+        .lightbox:target {
+        display: flex;
+    }
+
+    .lightbox img {
+        max-width: 65%;
+        max-height: 65%;
+        border-radius: 20px;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        animation: zoomIn 0.4s ease;
+        transform: translateY(-40px);
+    }
+
+
+   @keyframes zoomIn {
+        from { transform: scale(0.7); opacity: 0; }
+        to { transform: scale(1); opacity: 1; }
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    #thirddivision img {
+      height: 200px;
+    }
+
+/* BANNER NAME GLOW */
+  .banner-name {
+    font-size: 32px;
+    font-weight: 600;
+    color: #281A12;
+    text-shadow:
+    0 0 5px #ffffff,
+    0 0 10px #281A12,
+    0 0 20px #281A12,
+    0 0 40px rgba(130,186,196,0.8);
+    animation: glowPulse 2.5s infinite alternate;
+  }
+
+
+  @keyframes glowPulse {
+  from {
+  text-shadow:
+    0 0 5px #ffffff,
+    0 0 10px #281A12,
+    0 0 20px rgba(130,186,196,0.6);
+  }
+  to {
+  text-shadow:
+    0 0 10px #ffffff,
+    0 0 20px #281A12,
+    0 0 40px rgba(130,186,196,1);
+  }
+  }
+
+  /* PARTICLES */
+.particles{
+  position:fixed;
+  inset:0;
+  z-index:-1;
+  overflow:hidden;
+}
+.particles span{
+  position:absolute;
+  width:6px;
+  height:6px;
+  background:rgba(130,186,196,.4);
+  border-radius:50%;
+  animation:float 20s linear infinite;
+}
+@keyframes float{
+  from{transform:translateY(100vh)}
+  to{transform:translateY(-10vh)}
+}
+
+/* DARK MODE */
+body.dark{
+  background:linear-gradient(120deg,#0f2027,#203a43,#2c5364);
+  color:#eee;
+}
+body.dark nav{
+  background:rgba(0,0,0,.7);
+}
+body.dark h1,
+body.dark p,
+body.dark nav a{
+  color:#eee;
+}
+body.dark footer{
+  background:#111;
+}
+
+/* TOGGLE */
+.toggle{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:#82BAC4;
+  color:white;
+  border:none;
+  padding:12px 18px;
+  border-radius:50px;
+  cursor:pointer;
+  font-size:14px;
+  box-shadow:0 10px 25px rgba(0,0,0,.3);
+  z-index:999;
+}
+.toggle:hover{transform:scale(1.1)}
+
+.social-icons {
+  margin-top: 10px;
+}
+
+.social-icons a {
+  color: white;
+  font-size: 26px;
+  margin: 0 12px;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: #355C7D;
+  transform: scale(1.2);
+}
+
+
+@media (max-width: 768px) {
+
+  .section {
+    flex-direction: column;
+    padding: 60px 8%;
+    text-align: center;
+  }
+
+  #firstdivision h1 {
+    font-size: 42px;
+  }
+
+  .banner-name {
+    font-size: 22px;
+  }
+
+  .section img {
+    height: 260px;
+  }
+
+  nav a {
+    display: inline-block;
+    margin: 8px;
+  }
+}
+
+</style>
+</head>
+
+
+
+<body>
+
+<div class="progress-bar"></div>
+<div class="cursor"></div>
+
+<div class="particles">
+  <span style="left:10%;animation-duration:18s"></span>
+  <span style="left:25%;animation-duration:22s"></span>
+  <span style="left:40%;animation-duration:20s"></span>
+  <span style="left:55%;animation-duration:26s"></span>
+  <span style="left:70%;animation-duration:24s"></span>
+  <span style="left:85%;animation-duration:28s"></span>
+</div>
+
+<button class="toggle" onclick="toggleDark()">🌑 or ☀️ Mode</button>
+
+  <!-- NAVIGATION -->
+  <nav>
+    <a href="#firstdivision">Home</a>
+    <a href="#seconddivision">Biodata</a>
+    <a href="#family">Family</a>
+    <a href="#skills">Skills</a>
+    <a href="#experience">Experience</a>
+    <a href="#thirddivision">Education</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#video">Featured Video</a>
+  </nav>
+
+  <!-- BANNER -->
+  <div id="firstdivision" class="fade-in">
+    <img src="sopie.jpg" alt="web icon" />
+    <h1 style="font-size:70px; margin:10px;">PERSONAL RESUME</h1>
+    <p class="banner-name" >NURSAUFI UMAIRAH BINTI MOHAMAD SAHAR</p>
+    <a href="#seconddivision" class="btn">Explore more</a>
+  </div>
+
+  <!-- BIODATA -->
+  <div class="section fade-in" id="seconddivision">
+    <img src="profile.jpg" alt="student image" />
+    <div>
+      <h1>Biodata</h1>
+      <p><strong>Name:</strong> Nursaufi Umairah Binti Mohamad Sahar</p>
+      <p><strong>Date of Birth:</strong> 13<sup>th</sup> May 2005</p>
+      <p><strong>Current Status:</strong> Final Year Student, Diploma of Information Management <p>
+      <p><strong>Institution:</strong> <abbr title="Universiti Teknologi MARA">UiTM</abbr> Rembau</p>
+      <p><strong>Email:</strong> saufisahar@gmail.com</p>
+      <p><strong>Brief Profile:</strong> I am a passionate and driven Information student with a keen interest in Web Content and Development. My goal is to leverage information organization skills to create intuitive and effective digital solutions.</p>
+    </div>
+  </div>
+
+  <!-- FAMILY -->
+  <div class="section fade-in" id="family">
+    <div>
+      <h1>My Family</h1>
+      <p>I come from a supportive family who motivates me in my education journey. I am the youngest of six children, originating from the bustling town of Shah Alam, Selangor. My parents, Umi and Abah, have always been my greatest inspiration. They have consistently emphasized the importance of hard work, continuous learning, and community service, values which I carry into my studies and projects in Information Management. I have my two favourite siblings that has been with me through my hardship in studying this courses.</p>
+    </div>
+  </div>
+
+  <!-- SKILLS -->
+  <div class="section fade-in" id="skills">
+    <div>
+      <h1>Skills</h1>
+      <ul>
+      <li><strong>Web Development & Design</strong></li>
+      <p>My core competencies are centered on Web Development and Design, including proficiency in foundational languages like HTML and CSS, complemented by visual content creation tools such as Canva and Adobe Premier Pro for effective prototyping.</p>
+      <li><strong>Information Management & Organization</strong></li>
+      <p>I possess strong skills in Information Management, covering the practical application of Information Architecture principles to organize and structure digital content, alongside foundational knowledge in SQL for data handling.</p>
+      <li><strong>Professional & Transferable Skills</strong></li>
+      <p>I excel in Professional and Transferable Skills such as Project Management, effective Task Prioritization, and clear Technical Writing, which enables me to translate complex requirements into actionable deliverables and collaborate effectively within a team environment.</p>
+      </ul>
+    </div>
+  </div>
+
+  <!-- EXPERIENCE -->
+  <div class="section fade-in" id="experience">
+    <div>
+      <h1>Experience</h1>
+      <ul>
+      <li><strong>Industrial Training</strong></li>
+      <p>During my Industrial Training at <abbr title="Kelana Jaya Medical Centre">KJMC</abbr>, I served as a <abbr title="Management Information System">MIS</abbr> Department Assistant, gaining valuable exposure to real-world data workflows. My primary responsibilities included conducting user requirements analysis and assisting in the migration of digital assets to a new cloud-based repository. This experience significantly strengthened my problem-solving and technical documentation skills, requiring me to adhere strictly to professional standards for data organization and metadata integrity while collaborating directly with cross-functional teams.</p>
+      <li><strong>IMD317 Community Program</strong></li>
+      <p>The IMD317 Community Program involved in outreaching for the community of <abbr title="Perbadanan Perpustakaan Awam Negeri Sembilan">PPANS</abbr>. As a key team member, I was responsible for the project's Multimedia team, incharge in designing poster and content that need to be posted in our social media account. I utilized tools like Canva, demonstrating my ability to effectively communicate complex technical concepts and deliver a tangible, user-friendly outcome with a direct social impact.</p>
+      <li><strong>Academic Group Projects</strong></li>
+      <p>My various Academic Group Projects provided continuous opportunities to hone both technical and transferable skills within a structured environment. Notably, the IMD261 Database System project required me to design and implement a normalized database structure using SQL to manage online store.</p>
+      </ul>
+    </div>
+  </div>
+
+  <!-- EDUCATION SECTION -->
+  <div class="section fade-in" id="thirddivision" style="flex-direction: row-reverse;">
+    <div class="text-content">
+      <h1>Education</h1>
+      <li><strong>Sijil Pelajaran Malaysia</strong></li>
+      <p><abbr title="Sekolah Menengah Kebangsaan">SMK</abbr> Subang Bestari | 2018 – 2022<br><strong>Result:</strong> 4A 3B 2C<br><strong>Highlight:</strong> Focus on Science and Architecture stream, developing early analytical and logical thinking skills.</p>
+      <li><strong>Diploma in Information Management</strong></li>
+      <p>Universiti Teknologi MARA (UiTM) | 2023 – 2026<br><strong>CGPA:</strong> 3.65<br><strong>Highlight:</strong> This program provided a robust foundation in managing, organizing, and retrieving information across digital and physical environments, with a strong emphasis on user-centric design principles.</p>
+    </div>
+  </div>
+
+  <!-- GALLERY -->
+  <div class="section fade-in gallery" id="gallery">
+    <h1>Gallery</h1>
+    <br>
+    <a href="#img1"><img src="way.jpg" alt="gallery"></a>
+    <a href="#img2"><img src="program.jpg" alt="gallery"></a>
+    <a href="#img3"><img src="logo.png" alt="gallery"></a>
+  </div>
+
+  <!-- LIGHTBOX -->
+  <div id="img1" class="lightbox">
+    <a href="#way"><img src="way.jpg" alt="gallery"></a>
+  </div>
+  <div id="img2" class="lightbox">
+    <a href="#program"><img src="program.jpg" alt="gallery"></a>
+  </div>
+  <div id="img3" class="lightbox">
+    <a href="#logo"><img src="logo.png" alt="gallery"></a>
+  </div>
+
+  <!-- VIDEO SECTION -->
+  <div class="section fade-in" style="flex-direction: column; text-align: center;" id="video">
+  <h1>Featured Video</h1>
+
+  <a href="https://www.youtube.com/watch?v=pNstFdk-hnY&list=RDpNstFdk-hnY&start_radio=1" target="_blank">
+    <img 
+      src="https://img.youtube.com/vi/pNstFdk-hnY/hqdefault.jpg" 
+      alt="Watch video on YouTube"
+      style="
+        width: 420px;
+        max-width: 90%;
+        border-radius: 18px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+        transition: transform 0.4s ease;
+      "
+      onmouseover="this.style.transform='scale(1.05)'"
+      onmouseout="this.style.transform='scale(1)'"
+    >
+  </a>
+
+  <p style="margin-top:15px; font-size:16px;">
+  <strong> Click the thumbnail to watch on YouTube 🎬 </strong>
+  </p>
+  </div>
+
+  <div class="top-btn fade-in">
+    <a href="#firstdivision" class="btn">Back to Top</a>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="fade-in">
+  <p>© 2025 Nursaufi Umairah Binti Mohamad Sahar</p>
+  <p>Diploma in Information Management, UiTM Rembau</p>
+
+  <p style="margin-top:15px;">
+    If you have any inquiries, feel free to contact me:
+  </p>
+
+  <div class="social-icons">
+    <a href="mailto:saufisahar@gmail.com" target="_blank">
+      <i class="fa-solid fa-envelope"></i>
+    </a>
+
+    <a href="https://www.facebook.com/Saufi Umairah" target="_blank">
+      <i class="fa-brands fa-facebook"></i>
+    </a>
+
+    <a href="https://www.tiktok.com/@umamairs" target="_blank">
+      <i class="fa-brands fa-tiktok"></i>
+    </a>
+  </div>
+
+  <p style="margin-top:15px;">❤️ Made with love for IMD318 ❤️</p>
+  </footer>
+
+
+<script>
+// CURSOR
+const cursor=document.querySelector('.cursor');
+document.addEventListener('mousemove',e=>{
+  cursor.style.left=e.clientX+'px';
+  cursor.style.top=e.clientY+'px';
+});
+
+// SCROLL BAR
+window.addEventListener('scroll',()=>{
+  const scrollTop=document.documentElement.scrollTop;
+  const height=document.documentElement.scrollHeight-document.documentElement.clientHeight;
+  document.querySelector('.progress-bar').style.width=(scrollTop/height)*100+'%';
+});
+</script>
+
+<script>
+function toggleDark(){
+  document.body.classList.toggle("dark");
+}
+</script>
+
+
+</body>
+</html>
